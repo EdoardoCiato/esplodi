@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ci vediamo presto!!</title>
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: #FFC5D3;
+      color: black;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 40px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 4rem;
+      margin: 0 0 40px 0;
+    }
+
+    .content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .image-box img {
+      max-width: 420px;
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    }
+
+    .countdown-box {
+      min-width: 300px;
+      background: rgba(255,255,255,0.45);
+      padding: 30px;
+      border-radius: 24px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+
+    .countdown-label {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    #countdown {
+      font-size: 2.6rem;
+      font-weight: bold;
+      line-height: 1.4;
+    }
+
+    .back {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      text-decoration: none;
+      font-size: 2rem;
+      color: black;
+      background: white;
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+      text-align: center;
+      border-radius: 999px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      #countdown {
+        font-size: 2rem;
+      }
+
+      .page {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <a class="back" href="index.html" aria-label="Torna indietro">←</a>
+
+  <div class="page">
+    <h1>Ci vediamo presto!!</h1>
+
+    <div class="content">
+      <div class="image-box">
+        <img src="dog.png" alt="Dog smiling">
+      </div>
+
+      <div class="countdown-box">
+        <div class="countdown-label">Countdown to April 1st, 21:00</div>
+        <div id="countdown">Loading...</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function updateCountdown() {
+      const now = new Date();
+
+      const target = new Date(now.getFullYear(), 3, 1, 21, 0, 0);
+
+      if (now > target) {
+        target.setFullYear(target.getFullYear() + 1);
+      }
+
+      const diff = target - now;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("countdown").innerHTML =
+        days + "g " + hours + "h<br>" +
+        minutes + "m " + seconds + "s";
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+
+</body>
+</html>
