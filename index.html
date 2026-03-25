@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> ESPLODI!!!!! </title>
+  <title>ESPLODI!!!!!</title>
 
   <style>
     body {
       margin: 0;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -23,7 +23,9 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 80vh; /* pushes content slightly higher */
+      min-height: 100vh;
+      padding: 30px 20px;
+      box-sizing: border-box;
     }
 
     h1 {
@@ -31,16 +33,45 @@
       margin: 0 0 40px 0;
     }
 
+    .hearts {
+      margin-left: 10px;
+      filter: drop-shadow(0 0 8px rgba(0,0,0,0.6));
+      font-size: 0.9em;
+    }
+
     .gif {
       max-width: 800px;
       width: 100%;
+    }
+
+    .next-page {
+      margin-top: 30px;
+      display: inline-block;
+      font-size: 3rem;
+      text-decoration: none;
+      color: black;
+      background: white;
+      border-radius: 999px;
+      width: 80px;
+      height: 80px;
+      line-height: 80px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .next-page:hover {
+      transform: scale(1.08);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
     }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <h1>TANTI AUGURI CULOOOO 🤍🤍🤍 </h1>
+    <h1>
+      TANTI AUGURI CULOOOO
+      <span class="hearts">🤍🤍🤍</span>
+    </h1>
 
     <div class="gif">
       <div class="tenor-gif-embed"
@@ -53,6 +84,8 @@
         </a>
       </div>
     </div>
+
+    <a class="next-page" href="second.html" aria-label="Vai alla seconda pagina">→</a>
   </div>
 
   <script async src="https://tenor.com/embed.js"></script>
